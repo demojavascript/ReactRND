@@ -1,0 +1,183 @@
+require 'jquery-constants'
+KEYBOARD = require 'keyboard-mapping'
+util = require 'wf-util'
+
+class ToggleVisibility
+
+  constructor: (options) ->
+    $.extend(@, options)
+    @getTriggers()
+    @initialiseElements()
+    @setupEventListeners()
+
+  reflow: =>
+    @getTriggers()
+    @initialiseElements()
+
+  getTarget: (trigger, returnId = false) ->
+    targetId = trigger.attr('data-toggle-visibility')
+    if returnId then [$("[id='#{targetId}']"), targetId] else $("[id='#{targetId}']")
+
+  getTriggers: =>
+    @triggers = $(@triggerSelector)
+    @triggers.css "cursor", "pointer"
+
+  initialiseElements: =>
+    @triggers.each (i, element) =>
+      trigger = $(element)
+
+      [target, targetId] = @getTarget(trigger, true)
+
+      # Set intial aria for triggers
+      trigger.attr
+        'aria-haspopup': true
+        'aria-controls': targetId
+        'aria-expanded': false
+
+      target.addClass @targetSelector
+
+      handleResize = null
+
+      smallOnly = trigger.data("toggle-visibility-small-only")?
+      isSmall = trigger.data("toggle-visibility-is-small")?
+      upToLarge = trigger.data("toggle-visibility-up-to-large")?
+
+      if isSmall
+        handleResize = =>
+           if Foundation.utils.is_large_up() or (Foundation.utils.is_medium_only() and trigger.data('toggle-visibility-medium')?)
+             @show(trigger, target)
+           else
+             if !target.hasClass @isActiveClass
+               @hide(trigger, target)
+
+      if smallOnly
+        handleResize = =>
+          target.toggle(!Foundation.utils.is_small_only())
+
+      if upToLarge
+        handleResize = =>
+          if Foundation.utils.is_large_up()
+            @show(trigger, target)
+          else
+            # If filters are selected, show the selected filter and don't collapse
+            if target.find('.js-keep-filter-open').length != 0
+              @show(trigger, target)
+            else
+              @hide(trigger, target)
+
+      if smallOnly or upToLarge or isSmall
+        # This causes big problems in iOS, removing until it can be resolved.
+        # This code not running means resizing when from large to small screen the filter menu will already be open, but that is better than the filter list closing unexpectedly all the time.
+        #$(window).resize _.throttle handleResize, 200
+        handleResize()
+        $(window).resize ->
+          util.throttle handleResize(), 200
+
+  setupEventListeners: =>
+    self = @
+    $doc.on @triggerEvent, @triggerSelector, (e) ->
+      unless $(@).data("toggle-visibility-small-only")? and Foundation.utils.is_large_up()
+        e.stopPropagation()
+        self.toggleTarget $(@)
+
+    # Escape key closes the target and stops event from bubbling to document
+    $doc.on 'keydown', (event) =>
+      if event.keyCode == KEYBOARD.ESC
+        event.stopPropagation()
+        if @trigger? and @target?
+          @hide()
+        $("#{@triggerSelector}.#{@isActiveClass}").click()
+
+    # Click outside of target
+    $doc.on 'click', (event) =>
+      # Only execute if click was not on a tog vis trigger or target
+      isToggleVisibility = "#{@triggerSelector}, .#{@targetSelector}"
+      isAnotherDropdownOpen = @trigger? and @target?
+      togvisParent = $(event.target).closest(isToggleVisibility)
+      isOpenDropdownDifferentToClickTarget = isAnotherDropdownOpen and
+                                             !(togvisParent.is @trigger) and
+                                             !(togvisParent.is @target)
+
+      if isAnotherDropdownOpen and isOpenDropdownDifferentToClickTarget
+        if !$(@trigger).data('toggle-visibility-is-small')? or(!Foundation.utils.is_medium_up() and $(@trigger).data('toggle-visibility-is-small')?)
+          @hide trigger, target
+
+      # Close dropdown on click in a item if [toggle-close-on-click] data attr is present
+      if $(@target).data('toggle-close-on-click')?
+        @hide()
+
+  toggleTarget: (trigger) =>
+    target = @getTarget(trigger)
+    isActive = target.hasClass @isActiveClass
+    if isActive
+      @hide trigger, target
+    else
+      @show trigger, target
+
+    if trigger.attr('toggle-visibility-drop-down') or not trigger.attr('toggle-visibility-facet')
+      @trigger = trigger
+      @target = target
+
+  hide: (trigger = @trigger, target = @target) =>
+    trigger
+      .removeClass(@isActiveClass)
+      .attr('aria-expanded', false)
+
+    target.removeClass @isActiveClass
+    unless @activeClassWorks
+      target.slideUp(100)
+
+    # Remove focus from input in target as it is hidden now
+    target.find('.js-toggle-visibility-focus-on-show').eq(0).blur()
+
+    # Trigger an event for 3rd party javascript to use
+    trigger.trigger(@events.hide)
+    target.trigger(@events.hideTarget)
+
+  closeAll: =>
+    @hide() if @trigger? or @target?
+
+  show: (trigger, target) =>
+    # If there is another open tog vis instance and its not the one we're about
+    # to show, close it.
+    isAnotherDropdownOpen = @trigger? and @target?
+
+    if isAnotherDropdownOpen
+      isOpenDropdownDifferentToCurrentTarget = !(@trigger.is trigger) and
+                                               !(@target.is target)
+      visibleTarget = ".#{@targetSelector}"
+      isInsideTogVis = target.parents(visibleTarget).length and
+                       @target.is target.parents(visibleTarget)
+
+      if isOpenDropdownDifferentToCurrentTarget and !isInsideTogVis
+        @hide @trigger, @target
+        @trigger = null
+        @target = null
+
+    trigger
+      .addClass(@isActiveClass)
+      .attr('aria-expanded', true)
+
+    target.addClass @isActiveClass
+    unless @activeClassWorks
+      target.slideDown(100)
+
+    # Set focus in input in target
+    target.find('.js-toggle-visibility-focus-on-show').eq(0).focus()
+
+    # Trigger an event so other javascript can do something when target is shown
+    trigger.trigger(@events.show)
+    target.trigger(@events.showTarget)
+
+defaults =
+  isActiveClass: 'is-active'
+  triggerSelector: '[data-toggle-visibility]'
+  targetSelector: 'js-toggle-visibility-target'
+  triggerEvent: 'click'
+  events:
+    show: 'toggle-visibility.show'
+    showTarget: 'toggle-visibility.show-target'
+    hide: 'toggle-visibility.hide'
+    hideTarget: 'toggle-visibility.hide-target'
+
+module.exports = new ToggleVisibility(defaults)

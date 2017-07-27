@@ -1,0 +1,12 @@
+.list{
+
+}
+.list ul{
+margin:0px;
+padding: 0px;
+list-style-type: none;
+}
+.list ul li{
+	color: blue;
+	background: #ccc;
+}

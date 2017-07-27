@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+	 var str     = "d1";
+	 //var pattern = /^[2][0-5]{5}$/; 
+	 //var pattern = /[^1-9]$/; 
+	 //var pattern = /^[hul]/; 
+	 var pattern = /^[0-9a-z]{3,15}[@][a-z]{2,15}[.][a-z]{2,15}/
+	 var pwd_pattern = /^[A-Z][a-z0-9]{6}[_!@#$%^&*?]{1}/
+	 var an_ptrn = /((^[0-9]+[a-z])|(^[a-z]+[0-9]))/;
+	 // pattern for pincode start with 2 and length is 6
+	 var res	 = str.match(an_ptrn);
+	 //var regex = /^([a-z]+\d+|\d+[a-z]+)\w*$/i;
+	 
+	 console.log(res);
+	 //var ddd = "The book is black.".replace(/t/gi, "-");
+	 //console.log(ddd);
+</script>
+</body>
+</html>

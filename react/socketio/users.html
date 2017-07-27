@@ -1,0 +1,21 @@
+<!doctype html>  
+<html lang="en">  
+    <head>
+
+    </head>
+    <body>
+        <h1>USER COUNTS - <span class="counter"></span></h1>
+
+        <script src="/jquery/dist/jquery.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+             var socket = io.connect('http://localhost:4200/');
+             socket.on('connect', function(data) {
+                socket.emit('adminjoin', 'server side');
+             });
+             socket.on('broad', function(data) {
+                $(".counter").text(data);
+             });
+        </script>
+    </body>
+</html> 

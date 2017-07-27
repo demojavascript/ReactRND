@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div id="databox"  data-content-more=" >fjkasdf</b> ajdhsf 3</li><li>skdjfas fjkasd fjkasdf ajdhsf 4</li><li>skdjfas fjkasd fjkasdf ajdhsf 5</li></ul><p>sfjasdf jkasf asjkf asdfka sdfjkas fasdf</p><p>sfjasdf jkasf asjkf asdfka sdfjkas fasdf</p><p>sfjasdf jkasf asjkf asdfka sdfjkas fasdf</p>" data-content-less="<p>sfjasdf jkasf asjkf asdfka sdfjkas fasdf</p><ul><li>skdjfas fjkasd fjkasdf ajdhsf 1</li><li>skdjfas fjkasd fjkasdf ajdhsf 2</li><li>skdjfas fjkasd<b">
+	
+</div>
+<button id="btnmoreless">Toggler</button>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+	var orgg =  "<p><b>Build a &amp; future where</b><a href='http://www.google.com'>Google</a> <b>sfjasdf</b> jkasf asjkf asdfka sdfjkas fasdf</p><ul><li>skdjfas fjkasd fjkasdf ajdhsf 1</li><li>skdjfas fjkasd fjkasdf ajdhsf 2</li><li>fjkasdf</b> ajdhsf 3</li><li>skdjfas fjkasd fjkasdf ajdhsf 4</li><li>skdjfas fjkasd fjkasdf ajdhsf 5</li></ul><p>sfjasdf jkasf asjkf asdfka sdfjkas fa4sdf</p><p>sfjasdf jkasf asjkf asdfka sdfjkas fasdf</p><p>sfjasdf jkasf asjkf asdfka sdfjkas fasdf</p>";
+	var less = orgg.substring(0,34);
+	var more = orgg;
+	console.log(less);
+	/* enc = "&lt;p&gt;&lt;q&gt;Build a future where&lt;/q&gt;&lt;a href='http://www.google.com'&gt;Google&lt;/a&gt; &lt;b&gt;sfjasdf&lt;/b&gt; jkasf asjkf asdfka sdfjkas fasdf&lt;/p&gt;&lt;ul&gt;&lt;li&gt;skdjfas fjkasd fjkasdf ajdhsf 1&lt;/li&gt;&lt;li&gt;skdjfas fjkasd fjkasdf ajdhsf 2&lt;/li&gt;&lt;li&gt;fjkasdf&lt;/b&gt; ajdhsf 3&lt;/li&gt;&lt;li&gt;skdjfas fjkasd fjkasdf ajdhsf 4&lt;/li&gt;&lt;li&gt;skdjfas fjkasd fjkasdf ajdhsf 5&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;sfjasdf jkasf asjkf asdfka sdfjkas fa4sdf&lt;/p&gt;&lt;p&gt;sfjasdf jkasf asjkf asdfka sdfjkas fasdf&lt;/p&gt;&lt;p&gt;sfjasdf jkasf asjkf asdfka sdfjkas fasdf&lt;/p&gt;";
+	var decode = $('<div />').html(enc).text();
+	var parseless = $.parseHTML(decode.substring(0,13));
+	var parsemore = $.parseHTML(decode);
+	console.log(parseless);*/
+	var ddf1 = '"Make this fringe vest one of your latest style obsessions. The soft, multicolored knit and lush fringe take lavish texture to a new level. <ul>  <li>Regular length: 35".</li></ul><a href="fs">hgsdhf';
+
+	var ddf2 = '"Make this fringe vest one of your latest style obsessions. The soft, multicolored knit and lush fringe take lavish texture to a new level. <ul>  <li>Regular length: 35".</li> <li>Petite length: 31.5".</li> <li>Acrylic, wool. </li> <li>Machine wash. Imported. </li></ul> "';
+	$("#databox").html($.parseHTML(ddf1));
+	//$("#databox").html(less);
+	$(document).on("click", "#btnmoreless", function(){
+		if(!$("#databox").hasClass("is-active")){
+			$("#databox").html($.parseHTML(ddf2));
+			//console.log(parsemore);
+		}else{
+			$("#databox").html($.parseHTML(ddf1));
+			//console.log(parseless);
+		}
+		$("#databox").toggleClass("is-active")
+	});
+</script>
+</body>
+</html>

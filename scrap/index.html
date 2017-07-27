@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<link rel="stylesheet" type="text/css" href="theme.css">
+</head>
+<body>
+	
+	<script type="text/javascript">
+		var pass = true;
+		var willGetPass = new Promise(function(resolve, reject){
+			setTimeout(function(){
+				if(pass){
+					var result = {
+						maths:88,
+						eng:77,
+						science:80
+					}
+					resolve(result);
+				}
+				else{
+					var err = new Error('Exam was tough.');
+					reject(err);
+				}
+			}, 1000);
+		});
+		var showOff = function(result){
+			return new Promise(function(res, rej){
+				res("Maths marks is "+result.maths);
+			});
+		}
+
+		/*willGetPass
+			//.then(showOff)
+			.then(function(pass){
+				console.log(pass);
+			})
+			.catch(function(fail){
+				console.log(fail.message);
+			});*/
+			var getData = new Promise(function(resolve, reject) { 
+				// A mock async action using setTimeout
+				setTimeout(function() { var num = {val:10}
+					resolve(num); }, 3000);
+			});
+			getData
+			.then(function(num) { console.log('first then: ', num); return num.val * 2; })
+			.then(function(num) { console.log('second then: ', num); return num.val * 2; })
+			.then(function(num) { console.log('last then: ', num); });
+	</script>
+</body>
+</html>

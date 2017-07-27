@@ -1,0 +1,77 @@
+# When using Headroom jQuery plugin,
+# both the headroom.js and jQuery.headroom.js
+# scripts need to be included in page.
+window.Headroom = require 'headroom.js'
+headroom = require 'headroom.js/dist/jQuery.headroom.js'
+page = $(".page-content")
+
+HeadroomWrapper = ->
+  {
+    headerVisible: ->
+      $('.header').headroom
+        tolerance: 30,
+        classes:
+          unpinned: 'u-hide-up-to-medium'
+
+    searchExpand: ->
+      $('.search-header-opened').headroom
+        tolerance: 30,
+        classes:
+          initial: 'search-header-opened'
+          pinned: 'search-header-is-visible'
+
+    searchCollapse: ->
+      el = 'search-header'
+
+      $(".#{el}").removeClass("#{el}-opened").removeClass "#{el}-is-visible"
+
+      if $(".#{el}").data('headroom')
+        $(".#{el}").data('headroom').destroy()
+        $(".#{el}").removeData 'headroom'
+  }
+
+headroomTrigger = HeadroomWrapper()
+headroomTrigger.headerVisible()
+
+$(".js-header-trigger").click ->
+  headerTrigger = $(@).data 'header-trigger'
+  triggerName = $ ".#{headerTrigger}"
+
+  visibleClass = $ ".#{headerTrigger}-is-visible"
+  visibleClassName = headerTrigger + "-is-visible"
+
+  isVisible = page.hasClass visibleClassName
+  if visibleClassName is "nav-is-visible"
+    $("body").addClass "nav--scroll"
+
+  if isVisible
+    $("body").removeClass "nav--scroll"
+    visibleClass.removeClass visibleClassName
+
+    if headerTrigger is 'search-header'
+      headroomTrigger.searchCollapse()
+    
+  else
+    triggerName.add(page).addClass visibleClassName
+
+    if headerTrigger is 'search-header'
+      triggerName.addClass "#{headerTrigger}-opened"
+      headroomTrigger.searchExpand()
+    
+                        
+# Enable on load for centre home page only
+if pageInfo.currentTemplate is 'homepage'
+  headroomTrigger.searchExpand()
+
+# Collapse search on scroll
+if $(".search-header") and Foundation.utils.is_small_only()
+  $('body').bind 'touchmove', (e) ->
+    headroomTrigger.searchCollapse()
+    page.removeClass "search-header-is-visible"
+    
+  $('body').bind 'touchstart', (e) ->
+    console.log 444
+    return
+
+
+

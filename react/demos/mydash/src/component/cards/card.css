@@ -1,0 +1,44 @@
+.cardlist{
+
+}
+.cardlist ul{
+	margin-top: 10px;
+}
+.cardlist ul li{
+	vertical-align: top;
+	margin: 0px 10px 10px 10px;
+	display: inline-block;
+}
+.cardlist ul li .actions{visibility: hidden; text-align: center;}
+.cardlist ul li .actions button{margin: auto;
+    padding: 5px 10px;
+    font-size: 12px;
+    text-transform: capitalize;
+    background: #b71010;
+    margin-top: 4px;}
+.cardlist ul li:hover .actions{visibility: visible;}
+.cardlist ul li .cardBox{
+	word-break: break-all;
+	padding: 10px;
+	display: flex;
+	font-size: 16px;
+	width: 100px;
+    height: 100px;
+    background: #f6f6f4;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px;
+}
+
+.cardlist ul li a{text-decoration: none; color: #000000;}
+.cardlist ul li .cardBox span{
+display: inline-block;
+    margin: auto;	
+    text-align: center;
+}
+.cardlist ul li .cardBox:hover{background:#e1e1e1;}
+.cardlist ul li .cardBox.add{ cursor: pointer;
+ background: #c38d8d; font-size: 18px;
+    font-weight: bold;
+}
+.cardlist ul li .cardBox.add span{color: #fff;}
+.cardlist ul li .cardBox.add:hover{background: #a74f4f}

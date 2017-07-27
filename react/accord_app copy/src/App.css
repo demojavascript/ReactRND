@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.panesBox{}
+.panesBox ul{margin:0px; padding: 0px; list-style-type: none;}
+.panesBox ul li{
+  display: block;
+    text-align: left;
+    padding: 10px 10px;
+    background: #ccc;
+    border: 1px solid #000;
+    border-bottom: none;
+    cursor: pointer;
+}
+.panesBox ul li:last-child{
+    border-bottom: 1px solid #000;
+}
+.panesBox ul li:hover, .panesBox ul li.show {background: #000; color: #fff;}
+.panelsBox{}

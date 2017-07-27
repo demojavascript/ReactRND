@@ -1,0 +1,21 @@
+
+<table>
+	<thead>
+		<tr>
+			<td>S.No</td>
+			<td>Name</td>
+			<td>Age</td>
+			<td>Action</td>
+		</tr>
+	</thead>
+	<tbody>
+	  {{#each students}}
+		<tr>
+			<td>{{addOne @index}}</td>
+			<td>{{name}}</td>
+			<td>{{age}}</td>
+			<td>{{>btndelete}}</td>
+		</tr>
+	  {{/each}} 	
+	</tbody>
+</table>	

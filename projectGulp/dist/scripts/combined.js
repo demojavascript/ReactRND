@@ -1,0 +1,1 @@
+function getNum(){return 18}function User(n){this.name=n}

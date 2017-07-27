@@ -1,0 +1,117 @@
+<%@include file="/apps/centre/global.jsp"%>
+<centre:model className="com.westfieldlabs.centre.components.pages.Header" id="headerBean" />
+
+<%-- Header --%>
+<header class="header ${headerBean.accountPage ? 'header--with-image' : ''} u-hide-for-print js-header" role="banner" data-track-location="${isNational ? 'national-header' : 'center-header'}">
+
+  <div class="header__background-image js-header-background-image"></div>
+
+  <c:if test="${countryId eq 'uk'}">
+    <div id="consent_blackbar"></div>
+  </c:if>
+
+  <div class="l-container u-position-relative u-s-pe-base">
+
+    <%-- Mobile nav trigger --%>
+    <button class="header-trigger js-header-trigger" data-header-trigger="nav" aria-haspopup="true" aria-controls="nav-primary">
+      <span class="u-hide-visually">Menu</span>
+      <svg class="header-trigger__icon icon" aria-hidden="true" width="26" height="21">
+        <use xlink:href="#icon-hamburger"/>
+      </svg>
+    </button>
+    <%-- // Mobile nav trigger --%>
+
+    <%-- Mobile search trigger --%>
+    <c:if test="${(not isNational) or (headerBean.productPage)}">
+      <button class="header-trigger js-header-trigger" data-header-trigger="search-header" aria-haspopup="true" aria-controls="search-primary">
+        <span class="u-hide-visually">Search Westfield ${headerBean.centreShortName}</span>
+        <svg class="header-trigger__icon icon" aria-hidden="true" width="26" height="21">
+          <use xlink:href="#icon-search"/>
+        </svg>
+      </button>
+    </c:if>
+    <%-- // Mobile search trigger --%>
+
+    <div class="l-grid l-grid--align-middle">
+
+      <div class="l-grid__item u-one-quarter-from-large">
+
+        <c:choose>
+          <c:when test="${not isNational}">
+            <c:set var="homeUrl" value="${centreRootPath}.html"/>
+          </c:when>
+          <c:otherwise>
+            <c:set var="homeUrl" value="${nationalRootPath}.html/"/>
+          </c:otherwise>
+        </c:choose>
+
+        <%-- Logo --%>
+        <a class="${isNational ? 'logo logo--national' : 'logo'} js-logo-lockup" rel="home" href="${homeUrl}" data-track="click to ${isNational ? 'national' : 'center'} home" data-track-label="${wf:encodeForHTMLAttr(xssAPI, homeUrl)}">
+          <svg class="logo__icon" aria-hidden="true">
+            <use xlink:href="#icon-westfield-logo"/>
+          </svg>
+          <span class="u-hide-visually">Westfield</span>
+
+          <c:if test="${not isNational}">
+            <div class="logo__centre-name">
+              ${headerBean.centreShortName}
+            </div>
+          </c:if>
+        </a>
+        <%-- // Logo --%>
+      </div>
+
+      <%-- Bonus nav --%>
+      <div class="l-grid__item ${(headerBean.productPage) or (not isNational) ? 'u-two-quarters-from-medium' : 'u-three-quarters-from-medium'} u-hide-up-to-large">
+        <div class="u-hide-up-to-large u-display-block-from-large">
+          <cq:include path="bonusNavigation" resourceType="centre/components/content/navigation/bonusNavigation"/>
+        </div>
+      </div>
+
+      <%-- Search --%>
+      <c:if test="${(not isNational) or (headerBean.productPage)}">
+        <div data-focus="0" class="l-grid__item u-one-quarter-from-large search-header ${(headerBean.centreHomePage) ? 'search-header-opened search-header-is-visible' : null}">
+          <cq:include path="searchBar" resourceType="centre/components/content/searchBar"/>
+        </div>
+      </c:if>
+      <%-- // Search --%>
+
+      <%-- Header Text --%>
+      <c:if test="${headerBean.accountPage}">
+        <div class="l-grid__item u-one-whole u-hide-from-medium">
+          <p class="header__bottom-text js-header-text"></p>
+        </div>
+      </c:if>
+      <%-- // Header Text --%>
+
+    </div>
+    <%-- // l-grid --%>
+  </div>
+  <%-- // l-container --%>
+
+  <%-- Primary Nav --%>
+  <div class="u-background-color-grey-5">
+    <div class="l-container">
+      <div class="nav-flex">
+
+        <c:choose>
+          <c:when test="${isNational}">
+            <cq:include path="navigation" resourceType="centre/components/content/navigation/nationalNavigation"/>
+          </c:when>
+          <c:otherwise>
+            <cq:include path="navigation" resourceType="centre/components/content/navigation/rightNavigation"/>
+          </c:otherwise>
+        </c:choose>
+
+        <c:if test="${accountsEnabled}">
+          <div class="nav-accounts"></div>
+        </c:if>
+
+      </div>
+
+    </div>
+  </div>
+  <%-- // Primary Nav --%>
+
+</header>
+<%-- //Header --%>

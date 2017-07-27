@@ -1,0 +1,6 @@
+require 'college'
+require 'student'
+require 'helpers/addOne'
+require 'partials/btndelete'
+require 'tables'
+require 'eventss'

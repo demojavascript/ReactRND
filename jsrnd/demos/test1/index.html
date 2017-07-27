@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+	String.prototype.acsii = function(){
+		return this.charCodeAt(0);
+	} 
+	String.prototype.acsiiTostr = function(){
+		return String.fromCharCode(this)
+	}
+	String.prototype.len = function(){
+		var lenn = 0;
+		while(this[lenn] !== undefined) {
+			++lenn;
+		}
+	    return lenn;
+	} 
+	String.prototype.rev = function(){
+		var ddd = [];
+		for(var f=this.len()-1;f>=0;--f){
+			ddd[f] = [this[f]];
+		}					
+		return ddd.join("");
+	    
+	} 
+	String.prototype.occ = function(){
+		var alphabets = [];
+		for(var f=0;f<this.len();f++){
+			for(var i=0;i<255;i++){
+				if(this[f].toLowerCase().acsii() == i){
+					if(alphabets[this[f]] === undefined) {
+						alphabets[this[f]] = 1;
+					}else{
+						alphabets[this[f]] = alphabets[this[f]]+1
+					}
+				}
+			}
+		}					
+		return alphabets; 
+	}
+	String.prototype.occCount = function(sbstr){
+		var count = 0;
+		for(var f=0;f<this.len();f++){	
+			var icount = 0;			
+			for (var i = 0;i<sbstr.len();i++) {
+				if(sbstr[i] == this[f+i]){
+					icount++;
+				}
+			}
+			if(icount == sbstr.len()){
+				count++;
+			}
+		}					
+		return count; 
+	}
+	String.prototype.occCountArr = function(sbstr){
+		var count = 0;
+		var countAr = []
+		for(var f=0;f<this.len();f++){	
+			var icount = 0;			
+			for (var i = 0;i<sbstr.len();i++) {
+				if(sbstr[i] == this[f+i]){
+					icount++;
+				}
+			}
+			if(icount == sbstr.len()){
+				count++;
+				countAr.push(f);
+			}
+		}					
+		return countAr; 
+	}
+	
+	var employee = [
+		{name:"dkjfghasd fas", age:21, amount:345},
+		{name:"nmvcxb", age:20, amount:34511},
+		{name:"hklsfd", age:22, amount:3451},
+		{name:"dfjhgksjdf", age:199, amount:1345},
+		{name:"mnghksjd", age:2, amount:2345},
+		{name:"dfd", age:25, amount:33345}
+	];
+
+	
+	var [a,b,c] = [1,2,3];
+	console.log(b);
+
+</script>
+</body>
+</html>

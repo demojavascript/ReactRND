@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.jsx"],"names":[],"mappings":"AAAA;AACA;AACA;AACA","file":"app.js","sourcesContent":["React.render(\n  <h1>Hello, world!</h1>,\n  document.getElementById('example')\n);"]}

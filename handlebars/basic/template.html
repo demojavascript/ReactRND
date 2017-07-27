@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.fsfoo.com/js/vendor/handlebars-1.0.rc.2.js"></script>
+	<script type="text/javascript" src="handlebars.runtime-v4.0.5.js"></script>
+	<script src="templates.js"></script>
+
+</head>
+<body>
+	<header>
+		
+	</header>
+	<article></article>
+	<footer></footer>
+	<script type="text/javascript">
+	   var template = Handlebars.templates.footer;
+	   var context = {"copyright": "My New Post"};
+	   var html    = template(context);
+	   $("footer").append(html);
+	</script>
+	<script type="text/javascript">
+		var template = Handlebars.templates.post;
+	    var context = {title: "My New Post", body: "This is my first post!"};
+	    var html    = template(context);
+	    $("article").append(html);
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+.App {
+
+}
+
+header{
+  background: #000;
+}
+ul{
+  list-style-type: none;
+}
+header a{color: #fff; text-decoration: none;}
+header ul{display: inline-block; }
+header ul li{display: inline-block;}
+header ul li a{display: inline-block;
+    padding: 20px 20px;}
+header ul li a:hover{
+  background: #1e77b4;
+}    
+
+
+section{
+  padding:10px;
+  margin:auto;
+  max-width: 1024px;
+}
+section h1{
+  padding-bottom: 5px;
+    border-bottom: 1px dashed #282626;
+    margin-bottom: 10px;
+    color: #452727;
+    font-weight: normal;
+    font-size: 24px;
+}
+.postList{
+
+}
+.postList a{display: block;
+    padding: 10px;
+    color: #F44336;
+    font-size: 20px;}
+.postList a:hover{
+  color: blue;
+  text-decoration: none;
+}
+footer{
+      position: fixed;
+    bottom: 0px;
+    background: #ccc;
+    height: 60px;
+    width: 100%;
+}

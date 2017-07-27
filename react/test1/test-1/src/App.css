@@ -1,0 +1,32 @@
+.App{
+
+}
+.header, .footer {
+  width: 100%; 
+  margin: auto;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1024px;
+  background: #ccc; 
+  margin: auto;
+  min-height: 400px;
+}
+.contentArea, .sidebar {
+ 
+}
+.contentArea {
+  width: 70%;
+}
+.sidebar {
+  width: 30%;
+}
+.loading{display: block;
+width: 300px;
+height: 100px;
+background: #000;}

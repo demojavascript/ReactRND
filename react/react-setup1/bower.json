@@ -1,0 +1,20 @@
+{
+  "name": "react-setup1",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "bana"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css": "^3.3.7"
+  }
+}

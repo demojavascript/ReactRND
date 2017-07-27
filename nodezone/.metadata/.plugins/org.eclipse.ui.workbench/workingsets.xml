@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1494822806933_1" label="aem-unified" name="aem-unified">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/aem-unified" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/parent" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/bluegrass" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/bluegrass-bundle" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/bluegrass-content" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/centre" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/centre-bundle" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/centre-content" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/gpp" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/gpp-bundle" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/gpp-content" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/configs" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/configs-content" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/combined" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1494587810953_0" label="Window Working Set" name="Aggregate for window 1494587810953"/>
+</workingSetManager>

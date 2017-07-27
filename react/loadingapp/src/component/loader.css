@@ -1,0 +1,30 @@
+body.popup{
+	overflow:hidden;
+}
+.loader{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(0,0,0,0.1);
+    z-index: 99999;	
+}
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top:-50px;
+  height: 70px;
+  width: 70px;
+  background: #000;
+  animation: rotate 0.8s infinite linear;
+  border: 8px solid #000;
+  border-right-color: #c3bfbf;
+  border-radius: 50%;
+}
+@keyframes rotate {
+  0%    { transform: rotate(0deg); }
+  100%  { transform: rotate(360deg); }
+}

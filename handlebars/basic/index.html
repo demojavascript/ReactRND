@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.fsfoo.com/js/vendor/handlebars-1.0.rc.2.js"></script>
+</head>
+<body>
+
+<nav>
+	<script id="menuTemp" type="text/x-handlebars-template">
+		<ul>
+			{{#each menu}}
+				<li>
+					<a href="{{link}}">{{ifEq title "Home"}}</a>
+					{{#if submenu}}
+						<ul>
+							{{#each submenu}}
+			<li data-id="{{../link}}" class="{{addOne @index}}li"><a href="{{link}}">{{toUpper title}}</a></li>
+							{{/each}}	
+						</ul>
+					{{/if}}
+				</li>
+			{{/each}}
+		</ul>
+	</script>
+</nav>
+<div class="d">
+
+</div>
+<script id="handlebars-demo" type="text/x-handlebars-template">
+   <div>
+      My name is {{{name}}}. I am a {{occupation}}.
+   </div>
+   <ul>
+   	{{#each users}}
+   		<li>{{@index}} - {{prefix this}}</li>
+   	{{/each}}}
+   </ul>
+   	{{>templateDemo}}<br/><br/>
+   	{{#if false}}
+   		<p>1</p>
+   	{{else}}
+   		<p>333</p>
+   	{{/if}}
+
+   	{{addMe 11 11}} <br/>
+   	{{#ifeq 11 11}}
+   			<a href="#">Home</a>
+   	{{/ifeq}}
+</script>
+
+<script type="text/javascript">
+	var template = $('#handlebars-demo').html();
+
+	// Compile the template data into a function
+	var templateScript = Handlebars.compile(template);
+
+	var context = {"users":["ram", "kumar", "sharma", "Pal"], "name" : "<b>Ritesh Kumar</b>", "occupation" : "developer" };
+	Handlebars.registerPartial("templateDemo","My name is {{{name}}");
+	Handlebars.registerHelper("prefix", function(elm){
+		return " - "+elm;
+	});
+	Handlebars.registerHelper("addOne",function(dd){
+		return (dd + 1);
+	});
+	Handlebars.registerHelper("toUpper",function(str){
+		return str.toUpperCase();
+	});
+	Handlebars.registerHelper("ifEq", function(a, b){
+		if(a == b){
+			return true;
+		}else{
+			return false;
+		}
+	});
+	Handlebars.registerHelper("isGt", function(a, b){
+		if(a > b){
+			return true;
+		}else{
+			return false;
+		}
+	});
+	Handlebars.registerHelper("addMe", function(a, b){
+		return a+b;
+	});
+	Handlebars.registerHelper('ifeq', function(a,b, options) { 
+	    var fnTrue = options.fn;
+	    var fnFalse = options.inverse;
+	    return a == b ? fnTrue() : fnFalse();
+	});
+	//"sdfsda".toUpperCase
+
+	// html = 'My name is Ritesh Kumar. I am a developer.'
+	var html = templateScript(context);
+
+	// Insert the HTML code into the page
+	$(document.body).append(html);
+
+	var elmm;
+	var cntx = {"menu":[{"title":"Home","link":"http://www.google.com"},{"title":"About","link":"http://www.google.com/about"},{"submenu":[{"title":"Service1","link":"http://www.google.com/service1"}], "title":"Services","link":"http://www.google.com/services"}]};
+	compileElm($("#menuTemp"), $("nav"), cntx);
+	function compileElm(tmpl, elm, data){
+		//var temp = tmpl.html();
+		var script = Handlebars.compile($("#menuTemp").html());
+		elm.empty().html(script(data));
+	}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.fsfoo.com/js/vendor/handlebars-1.0.rc.2.js"></script>
+	<!--<script type="text/javascript" src="handlebars.runtime-v4.0.5.js"></script>-->
+	<!--<script src="templates.js"></script>-->
+</head>
+<body>
+	<header>
+		
+	</header>
+	<article></article>
+	
+	<script id="headerTmpl" type="text/x-handlebars-template">{{this.users.11.name}}
+		<div class="logo">
+			{{name}}<br/>
+			{{#ifeq 11 111}}
+				<h2>11</h2>
+			{{else}}
+				<h2>22</h2>	
+			{{/ifeq}}
+		</div>
+	</script>
+	<script id="linkTmpl" type="text/x-handlebars-template">
+		<div class="logo">
+			{{link}}<br/>
+			{{>headingTmpl}}
+		</div>
+	</script>
+	<script type="text/javascript">
+		Handlebars.registerPartial("headingTmpl", "<h1>{{title}}</h1>");
+		Handlebars.registerPartial("link", $("#linkTmpl").html());
+
+		Handlebars.registerHelper('ifeq', function(a,b, options) { 
+		    var fnTrue = options.fn;
+		    var fnFalse = options.inverse;
+		    return a == b ? fnTrue() : fnFalse();
+		});
+
+		var elm = $("#headerTmpl").html();
+		var script = Handlebars.compile(elm);
+		var data = {"title":"Title goes here...","name":"Demo Precompile", "link":"http://www.google.com", 
+			"users":[{"name":"1kjsf sdfj"},{"name":"2jskf asjf"}]
+			};
+		//setTimeout(function(){
+			$("header").html(script(data));
+		//}, 3000);
+	</script>
+	<script type="text/javascript">
+	   //console.log(Handlebars.templates.post);
+	   //var template = Handlebars.templates.post;
+	   //var context = {title: "My New Post", body: "This is my first post!"};
+	   //var html    = template(context);
+	   //$("article").append(html);
+	</script>
+</body>
+</html>

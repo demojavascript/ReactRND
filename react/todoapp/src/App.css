@@ -1,0 +1,67 @@
+.App {
+  display: block;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+  background: #fff;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fff;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #fff;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #fff;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #fff;
+}
+header, footer{
+  display: block;
+  color: #fff;
+  text-align: center;  
+}
+header{
+  height: 0px;
+  background: #000;  
+}
+footer{
+  height: 0px;
+  background: #c98282;
+}
+input.txt {
+  display: block;
+    width: 100%;
+    padding: 14px 8px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size:18px;
+
+    background: #928ae0;
+    color: #fff;
+}
+.addTask{
+border-bottom: 1px solid #ccc;  
+}
+.tasklist {}
+.tasklist ul{
+  margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+.tasklist ul li{ font-size:20px;
+padding: 12px 10px;
+    background: #eeeded;
+    border-bottom: 1px solid #ccc;
+}
+.tasklist ul li:last-child{}
+.tasklist ul li, .tasklist ul li:hover{cursor: pointer;}
+.tasklist ul li:hover{background: #000; color: #fff;}
+.btndelete{float: right; cursor: pointer; display: none;}
+.tasklist ul li:hover > .btndelete {display: inline-block;;}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

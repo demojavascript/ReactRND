@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+var Mobile = function(){
+	this.name = "Mobile 1";
+}
+Mobile.prototype.battery = function(){
+	return "675";
+}
+
+var Nokia = function(){
+	this.games = true;
+}
+Nokia.prototype = Object.create(Mobile.prototype);
+//var dd = new Nokia();
+//console.log(dd.name);
+
+var ddd = Object.create(Mobile);
+console.log(ddd.name);
+
+
+</script>
+</body>
+</html>

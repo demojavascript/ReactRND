@@ -1,0 +1,19 @@
+
+<table>
+	<thead>
+		<tr>
+			<td>S.No</td>
+			<td>Name</td>
+			<td>Age</td>
+		</tr>
+	</thead>
+	<tbody>
+	  {{#each students}}
+		<tr>
+			<td>{{@index}}</td>
+			<td>{{name}}</td>
+			<td>{{age}}</td>
+		</tr>
+	  {{/each}} 	
+	</tbody>
+</table>	

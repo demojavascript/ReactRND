@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+  width: 100%;
+  max-width: 1024px;
+  margin:auto;
+}
+
+.panesBox{}
+.panesBox ul{margin:0px; padding: 0px; list-style-type: none;}
+.panesBox ul li{
+  display: block;
+    text-align: left;
+    border: 1px solid #000;
+    border-bottom: none;
+}
+.panesBox h1{margin:0px; font-size: 18px;
+    background: #ccc;
+    cursor: pointer;
+    padding: 6px 10px;
+
+}
+.panesBox ul li:last-child{
+    border-bottom: 1px solid #000;
+}
+.panesBox ul li:hover h1, .panesBox ul li.show h1{background: #4b4c4e; color: #fff;}
+.panesBox ul li div{padding: 10px;}

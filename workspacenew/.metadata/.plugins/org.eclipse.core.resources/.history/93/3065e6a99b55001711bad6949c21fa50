@@ -1,0 +1,26 @@
+clearButton  = $ '.js-search-clear'
+bar          = $ '.js-search-bar'
+form         = $ '.js-search-form'
+header       = $ '.js-header'
+
+input        = form.find '.js-search-input'
+spacerClass  = 'search-bar__input--space'
+
+$ document
+  .on 'click', '.js-search-clear', ->
+    input.val('')
+    $('.js-search-clear').toggleClass 'u-hide'
+
+  .on 'input focus', '.js-search-input', (e)->
+    $('.js-search-clear').toggleClass 'u-hide', this.value is ''
+    $(".search-header").data("focus", '1') 
+    console.log "focused"
+
+  .on 'keyup', '.js-search-input', ->
+    input.toggleClass(spacerClass, input.val().length > 0)
+
+  .on 'submit', '.js-search-form', (e) ->
+    query = input.val().trim()
+    input.val query
+    if query is '' or query.length < 2
+      e.preventDefault()

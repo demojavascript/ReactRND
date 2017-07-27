@@ -1,0 +1,49 @@
+<%@include file="/apps/centre/global.jsp"%>
+<centre:model className="com.westfieldlabs.centre.components.content.SearchBar" id="searchBar" />
+<%-- Variables --%>
+<c:set var="searchUrl" value="${centreRootPath}/search.html"/>
+
+<c:choose>
+  <c:when test="${isNational}">
+    <c:set var="placeholder" value="Search Products"/>
+    <c:set var="searchUrl" value="${urlconfigs['national-products']}.html"/>
+  </c:when>
+  <c:when test="${!isNational and productsEnabled}">
+    <c:set var="placeholder" value="Products, stores, deals &amp; events"/>
+  </c:when>
+  <c:otherwise>
+    <c:set var="placeholder" value="Stores, deals &amp; events"/>
+  </c:otherwise>
+</c:choose>
+<%-- // Variables --%>
+
+<div class="search-bar js-search-bar">
+
+  <%-- Form --%>
+  <form class="search-bar__form js-search-form" action="${searchUrl}">
+
+    <%-- Label --%>
+    <label for="search" class="u-hide-visually">Search Westfield ${searchBar.centreShortName}</label>
+
+    <%-- Input --%>
+    <input value="${wf:encodeForHTMLAttr(xssAPI, wf:filterHTML(xssAPI, param.search_query))}" type="search" id="search" name="search_query" class="search-bar__form__input js-search-input ${not isNational ? 'js-search-autocomplete-enabled' : ''}" tabindex="-1" autocomplete="off" placeholder="${placeholder}" data-live-search="${param.livesearch}" aria-required="true" data-test="search-bar__form__input"/>
+
+    <%-- Search bar category --%>
+    <input type="hidden" name="search_cat" value="centre all"/>
+
+    <%-- Search button --%>
+    <button class="search-bar__form__submit" type="submit" tabindex="-1">
+      <svg class="search-bar__form__submit__icon icon">
+        <use xlink:href="#icon-search"/>
+      </svg>
+    </button>
+
+    <%-- Close button --%>
+    <button class="search-bar__form__clear js-search-clear u-hide" type="button" tabindex="-1">
+      <svg class="search-bar__form__clear__icon icon">
+        <use xlink:href="#icon-x"/>
+      </svg>
+    </button>
+    <div class="js-search-autocomplete"></div>
+  </form>
+</div>

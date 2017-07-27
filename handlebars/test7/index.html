@@ -1,0 +1,40 @@
+<! 
+
+To compile handlebars
+handlebars path_handlebars -f path_js
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>	
+</head>
+<body>
+	
+	<div id="tableBox">
+		
+	</div>
+	
+	<script type="text/javascript" src="libs/jquery.min.js"></script>
+	<script type="text/javascript" src="libs/handlebars.js"></script>
+	<script src="build/js/app.js"></script>
+	<script src="build/js/events.js"></script>
+    <script type="text/javascript">
+    	Handlebars.registerPartial('btndelete', MyApp.templates.btndelete);
+    	Handlebars.registerHelper('addOne', function(a, options) { 
+		    return parseInt(a)+1;
+		});
+    	var context = {
+		  students:[
+		    {name: "Task 1", age:11},
+		    {name: "Task 2", age:14},
+		    {name: "Task 3", age:13},
+		    {name: "Task 4", age:12},
+		    {name: "Task 5", age:10}
+		  ]
+		}
+		var template  = MyApp.templates.table;
+		$("#tableBox").html(template( context));
+    </script>
+</body>
+</html>

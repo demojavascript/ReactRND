@@ -1,0 +1,17 @@
+@import 'Reset.css';
+body{
+  font-family: Arial;
+  font-size: 12px;
+}
+
+/* struct */
+.form-group{margin-bottom: 15px;}
+.form-group:last-child{margin-bottom: 0px;}
+.row::after, .row::before{
+  display: table;
+  content: " ";
+}
+/* struct */
+@import 'Button.css';
+@import 'Input.css';
+@import 'Typography.css';

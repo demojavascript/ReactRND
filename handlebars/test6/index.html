@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>	
+</head>
+<body>
+	
+	<div id="booksList">
+		
+	</div>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="handlebars.js"></script>	
+    <script src="js/templates/btn.js"></script>
+    <script type="text/javascript">
+    	Handlebars.registerPartial('btn', Handlebars.templates['btn']);
+    	Handlebars.registerHelper('addTwo', function(a, b, options) { 
+		    return a+" -gwetwtrwe- "+b
+		});
+    </script>
+    <script src="js/templates/test.js"></script>
+    <script type="text/javascript">
+    	var context = {
+		  books:[
+		    {title: "Task 1"},
+		    {title: "Task 2"}
+		  ],
+		  btn_title:"Test Button"
+		}
+		var template = Handlebars.templates['test'];
+		$("#booksList").html(template( context));
+    </script>
+</body>
+</html>

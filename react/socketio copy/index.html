@@ -1,0 +1,41 @@
+<!doctype html>  
+<html lang="en">  
+    <head>
+
+    </head>
+    <body onunload="unloadme()">
+        <h1>Hello World! <span class="usersonline"></span></h1>
+        <div id="future"></div>
+        <form id="form" id="chat_form">
+            <input id="chat_input" type="text">
+            <input type="submit" value="Send">
+        </form>
+        <button id="btndis">Disconnect</button>
+         <script src="/jquery/dist/jquery.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+             var socket = io.connect('http://localhost:4200/');
+             socket.on('connect', function(data) {
+                console.log(data);
+                socket.emit('join', 'Hello World from client');
+             });
+             socket.on('disconnect', function(){
+                console.log(897898978);
+                
+                console.log(897898978);
+             });
+             function unloadme(){
+                alert('7364587');
+                socket.emit('unjoin', "disconected...");
+             }
+             $("#btndis").on("click", function(){
+                console.log(8978);
+                
+             });
+             socket.on('message', function(data){
+                console.log(data+" egsdgds");
+             });
+
+        </script>
+    </body>
+</html> 

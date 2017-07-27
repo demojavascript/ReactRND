@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		*{margin:0px; padding:0px;}
+		.main{width: 100%; height:auto; background: #ccc; padding: 10px;}
+		.leftBox, .rightBox{height: 200px; display: inline-block;;}
+		.leftBox{width: 50%; background: green; float:left;}
+		.rightBox{width: 50%; background: blue; float:right;}
+		@media screen and (max-width: 800px) {
+		    .leftBox, .rightBox{width: 100%; float:none;}
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="rightBox"></div>
+		<div class="leftBox"></div>
+	</div>
+</body>
+</html>

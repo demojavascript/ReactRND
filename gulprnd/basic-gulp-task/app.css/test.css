@@ -1,0 +1,10 @@
+section.header {
+  background: #000; }
+
+section.footer {
+  display: block; }
+
+section a {
+  text-decoration: none; }
+  section a:hover {
+    color: #000; }

@@ -1,0 +1,33 @@
+/* ============================================================================
+   COMPONENT -> ANCHOR TAG
+   ========================================================================= */
+
+
+/**
+ *
+ * Usage:
+ *
+ *  <div class="anchor-offset anchor-offset--header" id="..."></div>
+ *
+ */
+
+.anchor-offset {
+  display: block;
+  position: relative;
+  top: -100px;
+  visibility: hidden;
+
+  &--header {
+    @include respond-to(medium) {
+      top: -$header-height;
+    }
+
+    @include respond-to(large) {
+      top: -$header-height-desktop;
+
+      .ie-9 & {
+        top: -rem-calc(80);
+      }
+    }
+  }
+}

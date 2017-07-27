@@ -1,0 +1,127 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+div{box-sizing: border-box;}
+body {font-family: Arial;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none; display: inline-block;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{background:#fff;}
+.pull-right{float: right;}
+.dull{    font-size: 12px;
+    color: #aeacac;}
+nav{background: #000;}
+nav ul li{display: inline-block; }
+
+nav a{color: #fff; display: inline-block;  padding: 22px 30px; text-decoration: none; border-right:1px solid #3d3b3b;}
+nav a:hover,
+nav a.active{background: #ce5959; color: #fff;}
+
+.form{width: 300px;
+    margin: 10% auto;
+    background: #f8f7f7;
+    padding: 16px;
+    border: 1px solid #d5e0f6;
+    border-radius: 5px;}
+.row{display: block; clear: both; padding: 7px 0px;}
+input[type='text'],
+input[type='password'] {width: 100%;
+    padding: 6px 6px;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #ccc;}
+button{    border: 0px; outline: none;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 10px;
+    display: inline-block;
+    cursor: pointer;}
+.error{
+	background: #f8cece;
+    padding: 6px;
+    font-size: 12px;
+    color: #cf1f1f;
+    border: 1px solid #dda3a3;
+    border-radius: 3px;
+    line-height: 16px;
+}
+.info{
+	background: #ceddf8;
+padding: 6px;
+font-size: 12px;
+color: #1f47cf;
+border: 1px solid #8f9ad9;
+border-radius: 3px;
+line-height: 16px;
+}
+
+section.content{    display: block;  padding: 20px;}
+section.content h1{font-size: 24px; margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;}
+
+.table{
+	width: 100%;
+    table-layout: fixed;
+}
+.table td:first-child{width:80px;}
+.table td:last-child{width:140px;}
+.table thead{background: #000;
+    color: #fff;
+    padding: 10px;}
+.table tbody tr{}
+.table thead td{    padding: 10px;
+    border: 1px solid #000; }
+.table tbody td{padding:10px; border: 1px solid #ccc;
+    border-top: 0px;}
+.table tbody td:last-child{border-right:border: 1px solid #ccc;}
+
+
+.postlist ul li a{    display: block;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px 10px 2px 5px;
+    color: blue;
+    border-bottom: 1px dashed blue;
+    margin-bottom: 10px;}
+
+.postlist ul li a:hover{color: #000;
+border-bottom: 1px solid #000;}

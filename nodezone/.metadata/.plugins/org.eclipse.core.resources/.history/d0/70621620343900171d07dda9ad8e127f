@@ -1,0 +1,260 @@
+/* ============================================================================
+   COMPONENTS -> LOCAL NAVIGATION
+   ========================================================================= */
+
+  /**
+   *
+   * Usage:
+   *
+   * <ul class="local-nav__list">
+   *  <li>
+   *    <a href="#" class="local-nav__link is-active">Local Left Navigation</a>
+   *  </li>
+   * </ul>
+   *
+   *
+   */
+
+$link-border-left: rem-calc(4);
+$link-margin: $spacing-base;
+$filter-margin: $link-margin;
+$smaller-filters: $spacing-huge * 2;
+$nav-large-up-link-size: 17;
+$icon-size: rem-calc(12);
+$local-nav-height: rem-calc(48);
+
+
+.local-nav {
+  list-style: none;
+  margin: 0;
+
+
+  /**
+   * Item
+   */
+
+  &__item {border-bottom: 1px solid $color-grey-2;}
+
+
+  /**
+   * Link / Title of Nav Category (Non-links)
+   */
+
+  &__link, &__title {
+    text-decoration: none;
+    position: relative;
+    display: block;
+    padding: $spacing-base;
+  }
+  
+
+  /**
+   * Link
+   */
+
+  &__link {
+    color: $color-grey-3;
+
+
+    /**
+     * Hover & Focus
+     */
+
+    &:hover,
+    &:hover.is-active,
+    &:focus {
+      color: $color-grey-5;
+    }
+
+
+    /**
+     * Active
+     */
+
+    &:active,
+    &:active.is-active {
+      color: $color-brand;
+    }
+
+
+    /**
+     * Icon
+     */
+
+    &__icon {
+      @extend %u-position-v-middle;
+      position: absolute;
+      right: $spacing-base;
+      fill: $color-grey-2;
+      width: $icon-size;
+      height: $icon-size;
+      transition: all 0.1s ease;
+    }
+
+
+    /**
+     * Active
+     */
+
+    &.is-active {
+      color: $color-black;
+
+      svg {
+        transform: rotate(180deg) translateY(50%);
+        fill: $color-black;
+      }
+    }
+  }
+
+
+  /**
+   * Child Group
+   */
+
+  &__child-group {
+    margin: 0 $spacing-base;
+    max-height:0;
+    overflow: hidden;
+    transition: max-height 0.15s ease-out;
+
+
+    /**
+    * Ultra Search/See More
+    * To-do: Remove styling of this JS hook in the future
+    */
+
+    & .js-ultra-search:not(.is-active) li:nth-child(n+8) {
+      display: none;
+    }
+
+    & .js-ultra-search:not(.is-active) li:last-child {
+      display: block;
+    }
+
+
+
+   /**
+    * Expanded
+    */
+	&--visibility {	
+      @include respond-to(large) {
+        max-height: rem-calc(9999);
+      }
+    }
+    &.is-active {
+      max-height: rem-calc(9999);
+      transition: max-height 0.15s ease-in;
+    }
+
+    a {text-decoration: none;}
+
+    a:hover {text-decoration: underline;}
+  }
+
+
+  /**
+   * See More
+   *
+   * TODO: Refactor to be more SEO friendly
+   */
+
+  &__see-more {
+    display: block;
+    width: 100%;
+    text-align: left;
+    text-decoration: underline;
+    margin-bottom: $spacing-base;
+
+    @include respond-to(large) {
+      border-top: none;
+    }
+
+    &:after {content: "See " attr(data-count) " more " attr(data-type) " +";}
+
+    &.is-active {
+      background: $color-white;
+
+      &:after {content: "See less -";}
+    }
+  }
+}
+
+
+/**
+ * Modifier: Alt
+ */
+
+.local-nav--alt .local-nav__link {
+  border-left: 4px solid transparent;
+
+
+  /**
+   * Hover & Focus
+   */
+
+  &:hover, &:hover.is-active, &:focus {border-left-color: $color-grey-2;}
+
+
+  /**
+   * Active
+   */
+
+  &:active, &:active.is-active, &.is-active {border-left-color: $color-brand;}
+}
+
+
+/**
+ * Modifier: Dark (Handheld Only)
+ */
+
+.local-nav--dark {
+  @include respond-to(small, max) {
+    background-color: $color-grey-4;
+
+    .local-nav__item {border-color: $color-grey-3;}
+
+    .local-nav__link {
+      border: 0;
+
+      &:hover, &:focus, &.is-active {
+        color: $color-white;
+        border-left: none
+      }
+    }
+  }
+}
+
+
+/**
+ * Modifier: Accordian Group
+ */
+.local-nav__item--list, .mobile-hours-search--lg{
+  overflow:hidden;
+  max-height: 0;
+  transition:max-height .15s ease-out;
+  @include respond-to(large) {
+    max-height: rem-calc(9999);
+  }
+  &.is-active {
+    max-height: rem-calc(9999);
+    transition: max-height 0.15s ease-in;
+  }
+}
+.local-nav--grouped {
+
+  .local-nav__link, .local-nav__title {
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+  }
+}
+
+
+.local-nav-header {
+  @extend %u-text-size-large;
+  text-decoration: none;
+  padding: $spacing-base;
+
+  @include respond-to(medium) {
+    display: none;
+  }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<ul>
+   <li id="cl1">sdfsadf 1<button id="btn" onclick="deleteit(1)">Remove</button></li>
+   <li id="cl2">sdfsadf 2<button id="btn" onclick="deleteit(2)">Remove</button></li>
+   <li id="cl3">sdfsadf 3<button id="btn" onclick="deleteit(3)">Remove</button></li>
+   <li id="cl4">sdfsadf 4<button id="btn" onclick="deleteit(4)">Remove</button></li>
+   <li id="cl5">sdfsadf 5<button id="btn" onclick="deleteit(5)">Remove</button></li>
+</ul>
+<button id="btn" onclick="deleteit()">Remove</button>
+<script type="text/javascript">
+	function deleteit(index){
+		document.getElementById("cl"+index).remove();
+	}
+</script>
+</body>
+</html>

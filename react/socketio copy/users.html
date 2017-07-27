@@ -1,0 +1,25 @@
+<!doctype html>  
+<html lang="en">  
+    <head>
+
+    </head>
+    <body>
+        <script src="/jquery/dist/jquery.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+             var socket = io.connect('http://localhost:4200/');
+             /*socket.emit('updatePlayer', function(){
+                console.log('testing');
+             });*/
+             socket.on('connect', function(data) {
+                console.log(data);
+             });
+             socket.on('updatePlayer', function(msg){
+                console.log('testing - 'msg);
+             });
+             socket.on('message', function(data){
+                console.log(data+" egsdgds");
+             });
+        </script>
+    </body>
+</html> 
